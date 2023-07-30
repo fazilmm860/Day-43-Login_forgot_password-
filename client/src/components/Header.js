@@ -4,7 +4,7 @@ import "./header.css"
 import { LoginContext } from './ContextProvider/Context';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useNavigate , NavLink } from "react-router-dom"
+import { useNavigate, NavLink } from "react-router-dom"
 
 const Header = () => {
 
@@ -60,8 +60,8 @@ const Header = () => {
         <>
             <header>
                 <nav>
-                    
-                <NavLink to="/"><h1>HP Cloud</h1></NavLink>
+
+                    <NavLink to="/"><h1>Dashboard</h1></NavLink>
                     <div className="avtar">
                         {
                             logindata.ValidUserOne ? <Avatar style={{ background: "salmon", fontWeight: "bold", textTransform: "capitalize" }} onClick={handleClick}>{logindata.ValidUserOne.fname[0].toUpperCase()}</Avatar> :

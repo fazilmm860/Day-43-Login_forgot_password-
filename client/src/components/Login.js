@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink ,useNavigate} from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import "./mix.css"
 
@@ -27,7 +27,7 @@ const Login = () => {
     };
 
 
-    const loginuser = async(e) => {
+    const loginuser = async (e) => {
         e.preventDefault();
 
         const { email, password } = inpval;
@@ -52,23 +52,23 @@ const Login = () => {
             // console.log("user login succesfully done");
 
 
-            const data = await fetch("/login",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
+            const data = await fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                body:JSON.stringify({
-                     email, password
+                body: JSON.stringify({
+                    email, password
                 })
             });
 
             const res = await data.json();
             //  console.log(res);
 
-            if(res.status === 201){
-                localStorage.setItem("usersdatatoken",res.result.token);
+            if (res.status === 201) {
+                localStorage.setItem("usersdatatoken", res.result.token);
                 history("/dash")
-                setInpval({...inpval,email:"",password:""});
+                setInpval({ ...inpval, email: "", password: "" });
             }
         }
     }
@@ -99,6 +99,7 @@ const Login = () => {
 
                         <button className='btn' onClick={loginuser}>Login</button>
                         <p>Don't have an Account? <NavLink to="/register">Sign Up</NavLink> </p>
+                        <p style={{ color: "black", fontWeight: "bold" }}>Forgot Password  <NavLink to="/password-reset">Click Here</NavLink> </p>
                     </form>
                     <ToastContainer />
                 </div>
