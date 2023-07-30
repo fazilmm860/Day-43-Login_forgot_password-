@@ -12,9 +12,13 @@ const port = process.env.PORT
 const app = express()
 connection();
 
-app.get("/", (req, res) => {
-    res.status(201).json("server created")
-})
+// app.get("/", (req, res) => {
+//     res.status(201).json("server created")
+// })
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors());
 
 app.listen(port, () => {
     console.log(`Server Started on the Port ${port}`);
