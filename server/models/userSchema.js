@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const validator = require("validator");
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const keysecret = process.env.SECRET_KEY
+
 
 const userSchema = new mongoose.Schema({
     fname: {
@@ -13,10 +14,10 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true,
         required: true,
+        unique: true,
         validate(value) {
-            if (!validate.isEmail(value)) {
+            if (!validator.isEmail(value)) {
                 throw new Error("not valid email")
             }
         }
@@ -30,39 +31,41 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
-
     },
     tokens: [
         {
             token: {
                 type: String,
                 required: true,
-
             }
         }
     ]
-})
+});
 
 
-//hash Password
+
+
+
+// hash password
 
 userSchema.pre("save", async function (next) {
+
     if (this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 12);
         this.cpassword = await bcrypt.hash(this.cpassword, 12);
     }
     next()
-})
+});
 
-//token generate
 
-userSchema.methods.generateAuthtoken = async () => {
+// token generate
+userSchema.methods.generateAuthtoken = async function () {
     try {
         let token23 = jwt.sign({ _id: this._id }, keysecret, {
-            expiresIn: "3d"
+            expiresIn: "1d"
         });
 
-        this.tokens = this.tokens.concat({ token: token23 })
+        this.tokens = this.tokens.concat({ token: token23 });
         await this.save();
         return token23;
     } catch (error) {
@@ -70,7 +73,11 @@ userSchema.methods.generateAuthtoken = async () => {
     }
 }
 
-//creating model
-const userdb = new mongoose.model("users", userSchema)
+
+// createing model
+const userdb = new mongoose.model("users", userSchema);
 
 module.exports = userdb;
+
+
+// if (this.isModified("password")) {    }

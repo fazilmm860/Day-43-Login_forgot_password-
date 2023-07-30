@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink ,useNavigate} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import "./mix.css"
 
@@ -27,7 +27,7 @@ const Login = () => {
     };
 
 
-    const loginuser = async (e) => {
+    const loginuser = async(e) => {
         e.preventDefault();
 
         const { email, password } = inpval;
@@ -52,37 +52,36 @@ const Login = () => {
             // console.log("user login succesfully done");
 
 
-            const data = await fetch("/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
+            const data = await fetch("/login",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
                 },
-                body: JSON.stringify({
-                    email, password
+                body:JSON.stringify({
+                     email, password
                 })
             });
 
             const res = await data.json();
             //  console.log(res);
 
-            if (res.status === 201) {
-                localStorage.setItem("usersdatatoken", res.result.token);
+            if(res.status === 201){
+                localStorage.setItem("usersdatatoken",res.result.token);
                 history("/dash")
-                setInpval({ ...inpval, email: "", password: "" });
+                setInpval({...inpval,email:"",password:""});
             }
         }
     }
 
-
     return (
         <>
             <section>
-                <div className="from_data">
+                <div className="form_data">
                     <div className="form_heading">
                         <h1>Welcome Back, Log In</h1>
                         <p>Hi, we are you glad you are back. Please login.</p>
-                    
                     </div>
+
                     <form>
                         <div className="form_input">
                             <label htmlFor="email">Email</label>

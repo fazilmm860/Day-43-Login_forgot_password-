@@ -33,7 +33,7 @@ function App() {
 
     const data = await res.json();
 
-    if (data.status == 401 || !data) {
+    if (data.status === 401 || !data) {
       console.log("user not valid");
     } else {
       console.log("user verify");
