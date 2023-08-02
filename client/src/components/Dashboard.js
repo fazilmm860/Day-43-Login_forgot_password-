@@ -48,7 +48,7 @@ const Dashboard = () => {
         <>
             {
                 data ? <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <img src="./man.png" style={{ width: "200px", marginTop: 20 }} alt="" />
+                    <img src="client\public\man.png" style={{ width: "200px", marginTop: 20 }} alt="" />
                     <h1>User Email:{logindata ? logindata.ValidUserOne.email : ""}</h1>
                 </div> : <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", height: "100vh" }}>
                     Loading... &nbsp;

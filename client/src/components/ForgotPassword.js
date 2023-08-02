@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
+
 const ForgotPassword = () => {
 
     const { id, token } = useParams();
@@ -80,6 +81,7 @@ const ForgotPassword = () => {
 
     return (
         <>
+
             {
                 data2 ? (
                     <>

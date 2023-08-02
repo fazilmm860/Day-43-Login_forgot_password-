@@ -1,9 +1,10 @@
-
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
+import PasswordReset from "./components/PasswordReset";
+import ForgotPassword from "./components/ForgotPassword";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { Routes, Route, useNavigate } from "react-router-dom"
@@ -22,13 +23,14 @@ function App() {
 
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
-
+    console.log(token);
     const res = await fetch("/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Authorization": token
       }
+
     });
 
     const data = await res.json();
@@ -41,6 +43,7 @@ function App() {
       history("/dash");
     }
   }
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -61,6 +64,8 @@ function App() {
               <Route path="/" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/dash" element={<Dashboard />} />
+              <Route path="/password-reset" element={<PasswordReset />} />
+              <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
               <Route path="*" element={<Error />} />
             </Routes>
           </>
@@ -76,4 +81,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
