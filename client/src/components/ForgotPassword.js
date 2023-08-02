@@ -27,7 +27,7 @@ const ForgotPassword = () => {
 
         const data = await res.json()
 
-        if (data.status == 201) {
+        if (data.status === 201) {
             console.log("user valid")
         } else {
             history("*")
@@ -61,7 +61,7 @@ const ForgotPassword = () => {
 
             const data = await res.json()
 
-            if (data.status == 201) {
+            if (data.status === 201) {
                 setPassword("")
                 setMessage(true)
             } else {

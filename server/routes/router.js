@@ -170,7 +170,7 @@ router.post("/sendpasswordlink", async (req, res) => {
                 from: process.env.EMAIL,
                 to: email,
                 subject: "Sending Email For password Reset",
-                text: `This Link Valid For 2 MINUTES https://64ca4f2911530b1a09cd048e--visionary-queijadas-953478.netlify.app/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                text: `This Link Valid For 2 MINUTES https://visionary-queijadas-953478.netlify.app/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
             }
 
             transporter.sendMail(mailOptions, (error, info) => {
