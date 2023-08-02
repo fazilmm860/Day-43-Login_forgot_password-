@@ -51,7 +51,7 @@ const ForgotPassword = () => {
                 position: "top-center"
             });
         } else {
-            const res = await fetch(`/${id}/${token}`, {
+            const res = await fetch(`https://forgot-password-h85l.onrender.com/${id}/${token}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
