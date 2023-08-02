@@ -24,8 +24,8 @@ const Header = () => {
 
     const logoutuser = async () => {
         let token = localStorage.getItem("usersdatatoken");
-
-        const res = await fetch("https://forgot-password-h85l.onrender.com/logout", {
+        const url = `https://forgot-password-h85l.onrender.com`
+        const res = await fetch(`${url}/logout`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
