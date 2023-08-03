@@ -18,7 +18,8 @@ const ForgotPassword = () => {
     const [message, setMessage] = useState("");
 
     const userValid = async () => {
-        const res = await fetch(`https://forgot-password-h85l.onrender.com/forgotpassword/${id}/${token}`, {
+        const url = `https://forgot-password-h85l.onrender.com`
+        const res = await fetch(`${url}/forgotpassword/${id} / ${token}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
